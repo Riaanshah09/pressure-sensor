@@ -14,13 +14,13 @@ if %errorlevel% neq 0 (
 echo Python found!
 echo.
 
-echo Step 2: Installing required library...
+echo Step 2: Installing required libraries...
 pip install pyserial
 pip install openpyxl
 echo.
 
 echo Step 3: Finding your Desktop...
-for /f "delims=" %%i in ('powershell -command "[Environment]::GetFolderPath('Desktop')"') do set DESKTOP=%%i
+for /f "usebackq delims=" %%i in (`powershell -command "[Environment]::GetFolderPath('Desktop')"`) do set DESKTOP=%%i
 echo Desktop found at: %DESKTOP%
 echo.
 
@@ -34,5 +34,4 @@ echo.
 echo Setup complete!
 echo.
 echo REMINDER: Make sure all 3 sensor modules are turned on, then plug in the USB cable.
-echo From now on just plug in USB and double click start_sensors.bat on your Desktop.
-pause
+echo From now on just plug in USB and double click
