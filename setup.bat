@@ -19,10 +19,10 @@ pip install pyserial
 echo.
 
 echo Step 3: Downloading pressure.py...
-curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/pressure.py" -o "%USERPROFILE%\Desktop\pressure.py"
+curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/pressure.py" -o "%USERPROFILE%\OneDrive\Desktop\pressure.py"
 
 echo Step 4: Downloading start_sensors.bat...
-curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/start_sensors.bat" -o "%USERPROFILE%\Desktop\start_sensors.bat"
+curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/start_sensors.bat" -o "%USERPROFILE%\OneDrive\Desktop\start_sensors.bat"
 
 echo.
 echo Setup complete!
