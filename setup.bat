@@ -16,13 +16,19 @@ echo.
 
 echo Step 2: Installing required library...
 pip install pyserial
+pip install openpyxl
 echo.
 
-echo Step 3: Downloading pressure.py...
-curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/pressure.py" -o "%USERPROFILE%\OneDrive\Desktop\pressure.py"
+echo Step 3: Finding your Desktop...
+for /f "delims=" %%i in ('powershell -command "[Environment]::GetFolderPath('Desktop')"') do set DESKTOP=%%i
+echo Desktop found at: %DESKTOP%
+echo.
 
-echo Step 4: Downloading start_sensors.bat...
-curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/start_sensors.bat" -o "%USERPROFILE%\OneDrive\Desktop\start_sensors.bat"
+echo Step 4: Downloading pressure.py...
+curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/pressure.py" -o "%DESKTOP%\pressure.py"
+
+echo Step 5: Downloading start_sensors.bat...
+curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/start_sensors.bat" -o "%DESKTOP%\start_sensors.bat"
 
 echo.
 echo Setup complete!
