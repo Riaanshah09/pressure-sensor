@@ -4,6 +4,7 @@ echo.
 echo Plug in the USB cable now if you haven't already.
 echo.
 pause
-cd %USERPROFILE%\Desktop
+for /f "delims=" %%i in ('powershell -command "[Environment]::GetFolderPath('Desktop')"') do set DESKTOP=%%i
+cd /d "%DESKTOP%"
 python pressure.py
 pause
