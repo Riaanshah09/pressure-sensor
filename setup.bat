@@ -25,6 +25,8 @@ echo Step 4: Downloading start_sensors.bat...
 curl -L "https://github.com/Riaanshah09/pressure-sensor/raw/main/start_sensors.bat" -o "%USERPROFILE%\Desktop\start_sensors.bat"
 
 echo.
-echo Setup complete! 
+echo Setup complete!
+echo.
+echo REMINDER: Make sure all 3 sensor modules are turned on, then plug in the USB cable.
 echo From now on just plug in USB and double click start_sensors.bat on your Desktop.
 pause
