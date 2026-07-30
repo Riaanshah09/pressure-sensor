@@ -2,8 +2,15 @@ import serial
 import serial.tools.list_ports
 import csv
 import openpyxl
+import subprocess
+import os
 from openpyxl.chart import LineChart, Reference
 from datetime import datetime
+
+# Get correct Desktop path
+result = subprocess.run(['powershell', '-command', "[Environment]::GetFolderPath('Desktop')"], 
+                      capture_output=True, text=True)
+DESKTOP = result.stdout.strip()
 
 # Auto detect Arduino port
 ports = list(serial.tools.list_ports.comports())
@@ -51,14 +58,11 @@ else:
     ws = wb.active
     ws.title = "Data"
 
-    # Write headers
     ws.append(['Time', 'Sensor 1', 'Sensor 2', 'Sensor 3'])
 
-    # Write data
     for i in range(len(times)):
         ws.append([times[i], s1_data[i], s2_data[i], s3_data[i]])
 
-    # Create line chart
     chart = LineChart()
     chart.title = "Pressure Sensor Readings"
     chart.style = 10
@@ -68,12 +72,10 @@ else:
     data_ref = Reference(ws, min_col=2, max_col=4, min_row=1, max_row=len(times)+1)
     chart.add_data(data_ref, titles_from_data=True)
 
-    # Add chart to new sheet
     ws2 = wb.create_sheet("Chart")
     ws2.add_chart(chart, "A1")
 
-    # Save file
-    filepath = f"{__import__('os').path.expanduser('~')}\\Desktop\\{filename}"
+    filepath = os.path.join(DESKTOP, filename)
     wb.save(filepath)
-    print(f"Excel file saved to Desktop: {filename}")
+    print(f"Excel file saved to: {filepath}")
     input("Press Enter to exit...")
